@@ -1,6 +1,6 @@
 # prompt-feedback-skill
 
-Provide structured feedback on the user's instruction/request using the **good / more / next action** framework.
+Provide structured feedback on the user's messages in the conversation using the **good / more / next action** framework.
 
 ## Features
 
