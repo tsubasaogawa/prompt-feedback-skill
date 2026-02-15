@@ -1,7 +1,7 @@
 ---
 name: prompt-feedback-skill
 description: Provide structured feedback on the user's messages in the conversation using the "good / more / next action" framework.
-allowed-tools: Bash(mkdir:*) Bash(cat:*)
+allowed-tools: Bash(mkdir:*), Bash(cat:*), Write
 ---
 
 # Instructions
