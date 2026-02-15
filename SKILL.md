@@ -1,56 +1,28 @@
 ---
 name: prompt-feedback-skill
-description: >
-  Provide structured feedback on the user's instruction or request
-  using the "good / more / next action" framework. Use when the user
-  asks for feedback with those keywords. Saves feedback to a local file.
+description: Provide structured feedback on the user's messages in the conversation using the "good / more / next action" framework.
 allowed-tools: Bash(mkdir:*) Bash(cat:*)
 ---
 
 # Instructions
 
-Analyze the user's instruction and provide feedback in three perspectives.
-Always respond in the **same language as the user**.
+Analyze all user messages in this conversation (user messages only; prioritize latest intent on conflict) and provide structured feedback. Always respond in the **same language as the user**.
 
-## Steps
+## Rules
 
-1. Read the user's instruction carefully.
-2. Identify strengths (**good**), missing information (**more**), and the single most useful next step (**next action**).
-3. Respond using the output format below.
-4. Save the feedback to a file (see [Saving feedback](#saving-feedback)).
+- Internally synthesize all user messages into one consolidated instruction (do not output).
+- Identify **good** (strengths), **more** (missing info), and **next action** (one concrete step).
+- Unresolvable contradictions → list under **more**.
+- **next action** must be exactly one concrete step (a question, metric, or command).
+- No extra sections. Keep it concise and actionable.
 
-## Output format (must follow)
+## Output format
 
-```
-## good
-- ...
+Respond, then save to `~/.local/share/prompt-feedback-skill/YYYYMMDD-HHMMSS.md` (local timezone; `mkdir -p` the directory first).
 
-## more
-- ...
-
-## next action
-- ...
-```
-
-## Guidance
-
-- Keep it concise and actionable.
-- Do not add extra sections.
-- In **next action**, propose **one** concrete step only (one question to confirm, one metric to check, one command to run, etc.).
-- If the user's instruction is ambiguous, list missing constraints under **more**, and use **next action** to ask the most important single clarifying question.
-
-## Saving feedback
-
-After generating the feedback, save it to a Markdown file:
-
-- **Directory:** `~/.local/share/prompt-feedback-skill/`
-  - Create the directory if it does not exist: `mkdir -p ~/.local/share/prompt-feedback-skill`
-- **Filename:** `YYYYMMDD-HHMMSS.md` (local timezone)
-- **File content:**
+Saved file adds a `# <one-line summary>` header before the sections below.
 
 ```
-# <one-line summary of the conversation>
-
 ## good
 - ...
 
