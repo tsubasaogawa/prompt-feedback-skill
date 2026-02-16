@@ -6,7 +6,7 @@ allowed-tools: Bash(mkdir:*), Bash(cat:*), Write
 
 # Instructions
 
-Analyze all user messages in this conversation (user messages only; prioritize latest intent on conflict) and provide structured feedback. Always respond in the **same language as the user**.
+Analyze all user messages in this conversation (user messages only; prioritize latest intent on conflict) and provide structured feedback focused on improving the prompt. Always respond in the **same language as the user**.
 
 ## Rules
 
@@ -18,7 +18,7 @@ Analyze all user messages in this conversation (user messages only; prioritize l
 
 ## Output format
 
-Respond, then save to `~/.local/share/prompt-feedback-skill/YYYYMMDD-HHMMSS.md` (local timezone; `mkdir -p` the directory first).
+Respond, then save to `~/.local/share/prompt-feedback-skill/YYYYMMDD-HHMMSS.md` using the machine's local timezone (e.g., `date +%Y%m%d-%H%M%S` without `-u`; `mkdir -p` when the directory does not exist).
 
 Saved file adds a `# <one-line summary>` header before the sections below.
 
