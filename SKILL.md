@@ -18,7 +18,7 @@ Analyze all user messages in this conversation (user messages only; prioritize l
 
 ## Output format
 
-Respond, then save to `~/.local/share/prompt-feedback-skill/YYYYMMDD-HHMMSS.md` (local timezone; `mkdir -p` when the directory does not exist).
+Respond, then save to `~/.local/share/prompt-feedback-skill/YYYYMMDD-HHMMSS.md` using the machine's local timezone (e.g., `date +%Y%m%d-%H%M%S` without `-u`; `mkdir -p` when the directory does not exist).
 
 Saved file adds a `# <one-line summary>` header before the sections below.
 
